@@ -1,3 +1,4 @@
+import * as actionTypes from './actions';
 const initialState = {
     counter: 0,
     results: []
@@ -5,14 +6,14 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
     console.log(action);
-    if (action.type === 'INCREMENT') {
+    if (action.type === actionTypes.INCREMENT) {
         return {
             ...state,
             counter: state.counter + action.value
         }
     }
 
-    if (action.type === 'STORE_RESULT') {
+    if (action.type === actionTypes.STORE_RESULT) {
         return {
             ...state,
             results: state.results.concat({
@@ -22,7 +23,7 @@ const reducer = (state = initialState, action) => {
         }
     }
 
-    if (action.type === 'DELETE_RESULT') {
+    if (action.type === actionTypes.DELETE_RESULT) {
         const deletedId = action.id;
         const newResultsArray = state.results.filter((item) => {
             return item.id !== deletedId;
