@@ -8,12 +8,20 @@ export const increment = (payload) => {
         value: payload
     }
 }
-
-export const storeResult = (payload) => {
+export const saveResult = (res) => {
     return {
         type: STORE_RESULT,
-        result: payload
+        result: res
     }
+}
+export const storeResult = (res) => {
+    return (next) => {
+        setTimeout(() => {
+            next(saveResult(res));
+        }, 1234);
+    }
+
+
 }
 
 export const deleteResult = (payload) => {
